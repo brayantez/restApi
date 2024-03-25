@@ -69,7 +69,7 @@ public class ArticleController {
 
     @PutMapping("/{id}")
     public ResponseEntity<ApiResponse<Article>> updateArticle(@PathVariable("id") Long id,@RequestBody ArticleRequestDTO articleRequestDTO){
-        LOGGER.info("Updating an article by id iuwiuwiuw: {}", id);
+        LOGGER.info("Updating an article by id 13131313: {}", id);
         ApiResponse<Article> apiResponse = new ApiResponse<>();
         Optional<Article> article = articleService.findArticleById(id);
         if(article.isEmpty()){
