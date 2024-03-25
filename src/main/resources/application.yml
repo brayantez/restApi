@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: restapi
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/article
+    username: makaveli
+    password: aloofmac64
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    generate-ddl: false
+
+server:
+  port: 8090
