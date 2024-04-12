@@ -26,7 +26,8 @@ public class WebSecurityConfig {
             "/configuration/security",
             "/swagger-ui/**",
             "/webjars/**",
-            "/swagger-ui.html"
+            "/swagger-ui.html",
+            "/api/v1/article/**"
     };
 
     private final AuthenticationProvider authenticationProvider;
@@ -44,11 +45,11 @@ public class WebSecurityConfig {
             .authorizeHttpRequests(req ->
             req.requestMatchers(WHITE_LIST_URL)
                     .permitAll()
-                    .requestMatchers("/api/v1/article/**").hasAnyRole("ADMIN")
-                    .requestMatchers(GET, "/api/v1/article/**").hasAnyAuthority("ADMIN_READ")
-                    .requestMatchers(POST, "/api/v1/article/**").hasAnyAuthority("ADMIN_CREATE")
-                    .requestMatchers(PUT, "/api/v1/article/**").hasAnyAuthority("ADMIN_UPDATE")
-                    .requestMatchers(DELETE, "/api/v1/article/**").hasAnyAuthority("ADMIN_DELETE")
+//                    .requestMatchers("/api/v1/article/**").hasAnyRole("ADMIN")
+//                    .requestMatchers(GET, "/api/v1/article/**").hasAnyAuthority("ADMIN_READ")
+//                    .requestMatchers(POST, "/api/v1/article/**").hasAnyAuthority("ADMIN_CREATE")
+//                    .requestMatchers(PUT, "/api/v1/article/**").hasAnyAuthority("ADMIN_UPDATE")
+//                    .requestMatchers(DELETE, "/api/v1/article/**").hasAnyAuthority("ADMIN_DELETE")
             .anyRequest()
             .authenticated()
             )

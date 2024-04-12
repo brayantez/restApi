@@ -19,6 +19,7 @@ public class ArticleRequestDTO {
         this.title = title;
         this.body = body;
     }
+    public ArticleRequestDTO(){}
 
     public String getTitle() {
         return title;
