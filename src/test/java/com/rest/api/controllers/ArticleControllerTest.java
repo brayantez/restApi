@@ -44,11 +44,13 @@ class ArticleControllerTest {
 
         when(articleService.findAllArticles()).thenReturn(articles);
 
-        mockMvc.perform(get("/api/v1/article/all"))
+        mockMvc.perform(get("/api/v1/article/all")
+                         .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpectAll(
                       status().isOk(),
                       content().contentType(MediaType.APPLICATION_JSON),
-                      jsonPath("$").isMap()
+                      jsonPath("$.data[0].title").value("champion")
                 );
 
     }

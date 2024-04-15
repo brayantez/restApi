@@ -37,7 +37,9 @@ public class Article {
     )
     private User users;
 
-    public Article(String championBoy, String amHere) {
+    public Article(String title, String body) {
+        this.title = title;
+        this.body = body;
     }
 
     public Article() {
