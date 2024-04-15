@@ -12,7 +12,7 @@ public interface ArticleService {
 
     List<Article> findAllArticles();
 
-    Optional<Article> findArticleById(Long id);
+    Article findArticleById(Long id);
 
     Article updateArticle(Long id, ArticleRequestDTO articleRequestDTO);
 

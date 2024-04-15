@@ -58,12 +58,10 @@ public class ArticleController {
     public ResponseEntity<ApiResponse<Article>> getArticleById(@PathVariable("id") Long id){
         LOGGER.info("Retrieving one article of is: {}", id);
         ApiResponse<Article> apiResponse = new ApiResponse<>();
-        Optional<Article> article = articleService.findArticleById(id);
-        if(article.isEmpty()){
-            apiResponse.setStatus(0);
-            apiResponse.setMessage("Article not found");
-            return new ResponseEntity<>(apiResponse,HttpStatus.NOT_FOUND);
-        }
+        Article article = articleService.findArticleById(id);
+        apiResponse.setStatus(0);
+        apiResponse.setMessage("Article not found");
+        apiResponse.setData(article);
         return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
 
@@ -71,12 +69,6 @@ public class ArticleController {
     public ResponseEntity<ApiResponse<Article>> updateArticle(@PathVariable("id") Long id,@RequestBody ArticleRequestDTO articleRequestDTO){
         LOGGER.info("Updating an article by id 13131313: {}", id);
         ApiResponse<Article> apiResponse = new ApiResponse<>();
-        Optional<Article> article = articleService.findArticleById(id);
-        if(article.isEmpty()){
-            apiResponse.setStatus(0);
-            apiResponse.setMessage("Article not found");
-            return new ResponseEntity<>(apiResponse,HttpStatus.NOT_FOUND);
-        }
         Article updatedArticle = articleService.updateArticle(id,articleRequestDTO);
         apiResponse.setStatus(0);
         apiResponse.setData(updatedArticle);

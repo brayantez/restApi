@@ -36,15 +36,15 @@ public class ArticleServiceImp implements ArticleService{
     }
 
     @Override
-    public Optional<Article> findArticleById(Long id) {
-        return articleRepository.findById(id);
+    public Article findArticleById(Long id) {
+        return articleRepository.findById(id).orElseThrow(() -> new RuntimeException("Article not found " + id));
     }
 
     @Transactional
     @Modifying
     @Override
     public Article updateArticle(Long id, ArticleRequestDTO articleRequestDTO) {
-        Article article = new Article();
+        Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("Article not found " + id));
         article.setTitle(articleRequestDTO.getTitle());
         article.setBody(articleRequestDTO.getBody());
         article.setUser(null);
@@ -53,6 +53,7 @@ public class ArticleServiceImp implements ArticleService{
 
     @Override
     public void deleteArticle(Long id) {
-       articleRepository.deleteById(id);
+        Article article = articleRepository.findById(id).orElseThrow(() -> new RuntimeException("Article not found " + id));
+       articleRepository.delete(article);
     }
 }

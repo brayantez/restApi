@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.rest.api.dtos.ArticleRequestDTO;
 import com.rest.api.models.Article;
 import com.rest.api.services.ArticleService;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
@@ -36,10 +37,11 @@ class ArticleControllerTest {
     ObjectMapper objectMapper;
 
     @Test
-    void getAllArticlesTest() throws Exception {
+    @DisplayName("It should get all articles")
+    void itShouldGetAllArticles() throws Exception {
 
         var articles = List.of(new Article("champion","here"),new Article("dragon","you"));
-        System.out.println(articles);
+
         when(articleService.findAllArticles()).thenReturn(articles);
 
         mockMvc.perform(get("/api/v1/article/all"))
